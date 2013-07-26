@@ -1,6 +1,8 @@
 #ifndef COMMPACKET_H
 #define COMMPACKET_H
 
+#pragma GCC diagnostic ignored "-Wreorder"
+
 #include <QSharedPointer>
 #include <QDataStream>
 
