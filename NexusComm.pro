@@ -13,13 +13,16 @@ TEMPLATE = lib
 
 DEFINES += NEXUSCOMM_LIBRARY
 
-SOURCES += \
-    commservergroup.cpp
+SOURCES +=
 
 HEADERS += \
     commserver.h \
     def.h \
-    commservergroup.h
+    commservergroup.h \
+    commclient.h \
+    tcpcommserver.h \
+    commpacketprocessor.h \
+    commpacket.h
 
 unix:!symbian {
     maemo5 {

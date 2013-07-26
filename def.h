@@ -4,22 +4,20 @@
 namespace NexusComm {
 
     enum SocketType {
-        Unknown,
+        UnknownSocketType,
         TcpSocket,
         UdpSocket,
         LocalSocket,
 
-        User = 0x50
+        UserSocketType = 0x50
     };
 
     enum CommunicationType {
-        Unknown,
-
         DataStream,
         BasicPacket,
         DetailedPacket,
 
-        User = 0x50
+        UserCommType = 0x50
     };
 
 }
