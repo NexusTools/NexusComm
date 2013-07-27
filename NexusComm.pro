@@ -4,13 +4,19 @@
 #
 #-------------------------------------------------
 
+# Qt Modules
 QT       += network
 
 QT       -= gui
 
+# Project Information
 TARGET = NexusComm
 TEMPLATE = lib
 
+# Versioning
+include(version.pri)
+
+# Project Files
 DEFINES += NEXUSCOMM_LIBRARY
 
 SOURCES +=
@@ -22,13 +28,4 @@ HEADERS += \
     commclient.h \
     tcpcommserver.h \
     commpacketprocessor.h \
-    commpacket.h
-
-unix:!symbian {
-    maemo5 {
-        target.path = /opt/usr/lib
-    } else {
-        target.path = /usr/lib
-    }
-    INSTALLS += target
-}
+	commpacket.h
