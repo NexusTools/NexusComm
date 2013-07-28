@@ -16,7 +16,7 @@ protected:
     inline CommClient() {}
 
     void processPacket(CommPacketRef);
-    virtual void sendData(QByteArray);
+    virtual void sendData(QByteArray) =0;
 
 };
 

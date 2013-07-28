@@ -17,7 +17,7 @@ protected:
 
 };
 
-class RawCommPacket : QDataStream
+class RawCommPacket : public CommPacket, public QDataStream
 {
     friend class RawPacketProcessor;
 public:
