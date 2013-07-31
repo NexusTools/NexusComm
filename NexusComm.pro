@@ -22,10 +22,7 @@ DEFINES += NEXUSCOMM_LIBRARY
 SOURCES +=
 
 HEADERS += \
-    commserver.h \
-    def.h \
-    commservergroup.h \
     commclient.h \
-    tcpcommserver.h \
     commpacketprocessor.h \
-	commpacket.h
+	commpacket.h \
+    commrawpacket.h

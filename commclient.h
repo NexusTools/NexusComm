@@ -6,20 +6,22 @@
 
 #include "commpacket.h"
 
-class CommClient : public QObject
+// P = CommPacket, R = CommPacketProcessor
+template <class P, class R>
+class CommClient
 {
-    Q_OBJECT
 public:
     inline void sendPacket(CommPacket& packet) {sendData(packet.rawData());}
 
 protected:
-    inline CommClient() {}
+    inline CommClient(R* processor =0) : _processor(processor ? processor : new R()) {}
+    inline virtual ~CommClient() {delete _processor;}
 
-    void processPacket(CommPacketRef);
-    virtual void sendData(QByteArray) =0;
+    virtual void processPacket(P&) =0;
+    virtual void sendData(QByteArray&) =0;
 
+private:
+    R* _processor;
 };
-
-typedef QSharedPointer<CommClient> CommClientRef;
 
 #endif // COMMCLIENT_H

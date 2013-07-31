@@ -1,34 +1,28 @@
 #ifndef COMMPACKETPROCESSOR_H
 #define COMMPACKETPROCESSOR_H
 
-#include <QSharedPointer>
-#include <QObject>
+#include <QByteArray>
 
-#include "commpacket.h"
-
+class CommClient;
 class CommServer;
+class QIODevice;
 
-class CommPacketProcessor : public QObject
+template <class P>
+class CommPacketProcessor
 {
-    Q_OBJECT
 
-    friend class CommServer;
+    friend class CommClient;
+public:
+    inline CommClient* client() const{return _client;}
+
 protected:
     inline CommPacketProcessor() {}
 
-    virtual void processData(QByteArray) =0;
+    virtual void processData(QIODevice*, quint64 id) =0;
+    void packetParsed(P&, quint64 id);
 
-signals:
-    void packetParsed(CommPacketRef);
-    
-};
-
-class RawPacketProcessor : public CommPacketProcessor
-{
-protected:
-    inline void processData(QByteArray data) {
-        emit packetParsed(CommPacketRef((CommPacket*)new RawCommPacket(data)));
-    }
+private:
+    CommClient* _client;
 };
 
 #endif // COMMPACKETPROCESSOR_H
