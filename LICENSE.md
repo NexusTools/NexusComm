@@ -1,4 +1,4 @@
-This file is part of the NexusTools Communication Library,
+This file is part of the Nexus Communication Library,
 Herein referred to as "NexusComm".
 
     NexusComm is free software: you can redistribute it and/or modify
